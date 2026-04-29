@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PIN Entry</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #eef2f7;
+    }
+
+```
+.container {
+  background: #222;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #555;
+}
+
+.dot.filled {
+  background: #00d084;
+}
+
+.message {
+  height: 20px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  gap: 10px;
+  justify-content: center;
+}
+
+button {
+  height: 60px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #444;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #666;
+}
+
+.wide {
+  grid-column: span 3;
+  background: #e74c3c;
+}
+```
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="dots" id="dots"></div>
+  <div class="message" id="message"></div>
+
+  <div class="buttons">
+    <button onclick="press(1)">1</button>
+    <button onclick="press(2)">2</button>
+    <button onclick="press(3)">3</button>
+
+```
+<button onclick="press(4)">4</button>
+<button onclick="press(5)">5</button>
+<button onclick="press(6)">6</button>
+
+<button onclick="press(7)">7</button>
+<button onclick="press(8)">8</button>
+<button onclick="press(9)">9</button>
+
+<button class="wide" onclick="clearPin()">Clear</button>
+<button class="wide" onclick="press(0)">0</button>
+```
+
+  </div>
+</div>
+
+<script>
+  const correctPin = "1234"; // change this
+  let input = "";
+
+  const dotsContainer = document.getElementById("dots");
+  const message = document.getElementById("message");
+
+  function updateDots() {
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < 4; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      if (i < input.length) dot.classList.add("filled");
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function press(num) {
+    if (input.length < 4) {
+      input += num;
+      updateDots();
+
+      if (input.length === 4) {
+        setTimeout(checkPin, 200);
+      }
+    }
+  }
+
+  function clearPin() {
+    input = "";
+    message.textContent = "";
+    updateDots();
+  }
+
+  function checkPin() {
+    if (input === correctPin) {
+      message.textContent = "Access Granted";
+      message.style.color = "#00d084";
+    } else {
+      message.textContent = "Wrong PIN";
+      message.style.color = "#ff4d4d";
+    }
+
+    setTimeout(() => {
+      clearPin();
+    }, 1000);
+  }
+
+  // initialize
+  updateDots();
+</script>
+
+</body>
+</html>
