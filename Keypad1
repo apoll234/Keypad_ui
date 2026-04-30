@@ -10,6 +10,35 @@ padding:100p
 border:100px
 }
 <-- Box for visual input--> 
-width: 
+.box 
+{
+height: 150px
+width:100px
+margin:100px
+padding:100p
+border:100px
+}
+body {
+  background: #111;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+}
 
+.container {
+  margin-top: 100px;
+}
+
+input {
+  padding: 10px;
+  font-size: 18px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background: green;
+  border: none;
+  color: white;
+}
 <-- Access Granted/ Access Denied --> 
