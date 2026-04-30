@@ -3,12 +3,13 @@
 <--Background-->
 .box 
 {
-height: 
-width:
-margin:
-padding:
-border:
+height: 150px
+width:100px
+margin:100px
+padding:100p
+border:100px
 }
 <-- Box for visual input--> 
+width: 
 
 <-- Access Granted/ Access Denied --> 
