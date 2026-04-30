@@ -1,6 +1,5 @@
-<-- CSS -->
+/*CSS*/
 
-<--Background-->
 .box 
 {
 height: 150px
